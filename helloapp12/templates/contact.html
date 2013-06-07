@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row-fluid">
+		<div class="span12">
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="span5 offset1">
+				<h4> Hours of Operation </h4>
+				<br>
+				<p> Monday - Thursday: &nbsp;&nbsp;&nbsp;10am - 10pm</p>
+				<p> Friday - Sunday: &nbsp;&nbsp;&nbsp;10am - 11pm</p>
+				<hr>
+				<div class="alert alert-success" style="display: none;" id="alert_success">
+				    <button type="button" class="close">×</button>
+				    <strong> THANKS! </strong> Your message has been sent.
+				</div>
+				<div id="contactme">
+					<h4> Contact Us </h4>
+					<form class="form-horizontal" action="/contact/" method="post" >
+					  	<div class="control-group">
+					    	<label class="control-label" for="inputName" style="width: 0px">Name</label>
+					    	<div class="controls" style="margin-left: 100px">
+					      		<input type="text" name="inputName" placeholder="Name">
+					    	</div>
+					  	</div>
+					  	<div class="control-group">
+					    	<label class="control-label" for="inputEmail" style="width: 0px">Email</label>
+					    	<div class="controls" style="margin-left: 100px">
+					      		<input type="text" name="inputEmail" placeholder="Email">
+					    	</div>
+					  	</div>
+					  	<div class="control-group">
+					    	<label class="control-label" for="inputMessage" style="width: 0px">Message</label>
+					    	<div class="controls" style="margin-left: 100px">
+					      		<textarea rows="4" class="input-large" name="inputMessage"></textarea>
+					    	</div>
+					  	</div>
+					  	<div class="control-group">
+					    	<div class="controls">
+					      		<button type="submit" class="btn" id="clickme" disabled="disabled">Submit</button>
+					    	</div>
+					  	</div>
+					</form>
+				</div>
+			</div>
+			<div class="span4 offset1">
+				<iframe width="400" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=1+Cambridge+Center,+Cambridge,+MA&amp;aq=0&amp;oq=1+ca&amp;sll=42.37839,-71.11291&amp;sspn=0.073929,0.142822&amp;ie=UTF8&amp;hq=&amp;hnear=1+Cambridge+Center,+Cambridge,+Middlesex,+Massachusetts+02142&amp;t=m&amp;z=14&amp;ll=42.362583,-71.08535&amp;output=embed"></iframe>
+			</div>
+		</div>
+	</div>
+  	<script>
+		
+		$(':input').bind('keyup', function() {
+		    if(allFilled()) $('#clickme').removeAttr('disabled');
+		});
+
+		function allFilled() {
+		    var filled = true;
+		    $('body input').each(function() {
+		        if($(this).val() == '') filled = false;
+		    });
+		    return filled;
+		}
+
+  		$("#clickme").click(function()
+  		{
+  			$("#alert_success").css('display', 'block');
+
+  		});
+  	</script>
+{% endblock %}
